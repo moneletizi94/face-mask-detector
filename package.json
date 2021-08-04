@@ -12,9 +12,11 @@
   "license": "ISC",
   "dependencies": {
     "@tensorflow/tfjs": "^2.0.0",
-    "@vladmandic/face-api": "^1.2.3"
+    "@vladmandic/face-api": "^1.2.3",
+    "face-api.js": "^0.22.2"
   },
   "devDependencies": {
+    "copy-webpack-plugin": "^8.1.1",
     "html-webpack-plugin": "^5.3.1",
     "webpack": "^5.36.2",
     "webpack-cli": "^4.6.0"
