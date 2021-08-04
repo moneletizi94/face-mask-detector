@@ -29,7 +29,7 @@ video.addEventListener('loadeddata', async () => {
   
   //await faceapi.loadFaceLandmarkTinyModel()
   //await faceapi.loadSsdMobilenetv1Model('/models')
-  await faceapi.loadTinyFaceDetectorModel('/models')
+  await faceapi.loadTinyFaceDetectorModel(utils.getBaseUrl() + '/models')
 
   model = await mask.loadMaskModel()
   status.innerText = 'model loaded'
