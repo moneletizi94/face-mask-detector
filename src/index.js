@@ -27,6 +27,7 @@ setupCamera();
 video.addEventListener('loadeddata', async () => {
   status.innerText = "loading models..."
   
+  //await faceapi.loadFaceLandmarkTinyModel()
   //await faceapi.loadSsdMobilenetv1Model('/models')
   await faceapi.loadTinyFaceDetectorModel('/models')
 
@@ -59,8 +60,9 @@ async function gameLoop() {
     ctx.drawImage(video, 0, 0, 600, 400);
 
     if (faces.length > 0) {
+      let startTime = performance.now();
       let predictions = await mask.predict(model, faces[0])
-      console.log(predictions)
+      console.log("Mask prediction time: " + (performance.now() - startTime));
       let label_pred = LABELS[utils.arrayMaxIndex(predictions)]
       let box = detections[0].box
       let box_pred = new faceapi.draw.DrawBox(box, { label: label_pred, lineWidth: 2 })
