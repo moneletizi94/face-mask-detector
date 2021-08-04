@@ -2,7 +2,11 @@
 import * as tf from '@tensorflow/tfjs';
 
 export async function loadMaskModel() {
-    return await tf.loadLayersModel('http://localhost:8080/models/mask/model.json')
+    let url = "MASK_MODEL_URL" in process.env
+            ? process.env["MASK_MODEL_URL"] 
+            : 'http://localhost:8080'
+    
+    return await tf.loadLayersModel(url + "/models/mask/model.json")
 }
 
 const offset = tf.scalar(127.5);
